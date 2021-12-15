@@ -23,7 +23,7 @@ import (
 )
 
 const (
-	JCVersion = "1.0.0"
+	JCVersion = "1.0.1"
 )
 
 func compress(input string, quotes int, last byte) ([]byte, int, byte) {
