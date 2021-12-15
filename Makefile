@@ -73,6 +73,26 @@ build: bin/jc
 build_release: bin/gox
 	scripts/build-release
 
+#
+# Docker
+#
+
+docker_build: ## Build the docker image
+	docker build -f Dockerfile --tag jc:latest .
+
+docker_help: ## Run the help command using docker image
+	docker run -it --rm jc:latest --help
+
+docker_example: ## Run an example using the docker image
+	docker run -i --rm jc:latest < testdata/doc.jsonl
+
+.PHONY: docker_shell
+docker_shell:  ## Open shell using docker image
+	docker run -it --rm --entrypoint /bin/sh jc:latest
+
+docker_version:  ## Run the version command using docker image
+	docker run -it --rm jc:latest --version
+
 ## Clean
 
 clean:  ## Clean artifacts
