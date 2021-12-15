@@ -30,3 +30,6 @@ bin/errcheck ${pkgs}
 echo "******************"
 echo "Running staticcheck"
 bin/staticcheck -checks all ${pkgs}
+echo "******************"
+echo "Running misspell"
+bin/misspell -locale US -error *.md *.go

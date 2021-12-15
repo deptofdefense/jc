@@ -28,7 +28,7 @@ tidy: ## Tidy Go source code
 	go mod tidy
 
 .PHONY: test_go
-test_go: bin/errcheck bin/ineffassign bin/staticcheck bin/shadow ## Run Go tests
+test_go: bin/errcheck bin/misspell bin/staticcheck bin/shadow ## Run Go tests
 	bash scripts/test.sh
 
 .PHONY: test_cli
@@ -51,8 +51,8 @@ bin/goimports:
 bin/gox:
 	go build -o bin/gox github.com/mitchellh/gox
 
-bin/ineffassign:
-	go build -o bin/ineffassign github.com/gordonklaus/ineffassign
+bin/misspell:
+	go build -o bin/misspell github.com/client9/misspell/cmd/misspell
 
 bin/staticcheck:
 	go build -o bin/staticcheck honnef.co/go/tools/cmd/staticcheck
@@ -60,10 +60,10 @@ bin/staticcheck:
 bin/shadow:
 	go build -o bin/shadow golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
 
-bin/jc: ## Build jc CLI for Darwin / amd64
+bin/jc: ## Build icecube CLI for Darwin / amd64
 	go build -o bin/jc github.com/deptofdefense/jc/cmd/jc
 
-bin/jc_linux_amd64: bin/gox ## Build jc CLI for Darwin / amd64
+bin/jc_linux_amd64: bin/gox ## Build icecube CLI for Darwin / amd64
 	scripts/build-release linux amd64
 
 .PHONY: build

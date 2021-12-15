@@ -195,8 +195,8 @@ func main() {
 	initFlags(rootCommand.Flags())
 
 	if err := rootCommand.Execute(); err != nil {
-		_, _ = fmt.Fprintln(os.Stderr, "jt: "+err.Error())
-		_, _ = fmt.Fprintln(os.Stderr, "Try jt --help for more information.")
+		_, _ = fmt.Fprintln(os.Stderr, "jc: "+err.Error())
+		_, _ = fmt.Fprintln(os.Stderr, "Try jc --help for more information.")
 		os.Exit(1)
 	}
 }
